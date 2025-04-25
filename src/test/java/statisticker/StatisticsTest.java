@@ -14,9 +14,9 @@ public class StatisticsTest
     public void reportsAverageMinMaxx()
     {
         Float[] numbers = {1.5f, 8.9f, 3.2f, 4.5f};
-        List<___> numberList = Arrays.asList(numbers);
+        List<Float> numberList = Arrays.asList(numbers);
 
-        Statistics.Stats s = Statistics.getStatistics(numberList);
+        Stats s = Statistics.getStatistics(numberList);
 
         float epsilon = 0.001f;
         assertEquals(s.average, 4.525f, epsilon);
@@ -26,10 +26,10 @@ public class StatisticsTest
     @Test
     public void reportsNaNForEmptyInput()
     {
-        List<___> emptyList = new ArrayList<___>();
+        List<Float> emptyList = new ArrayList<>();
 
-        Statistics.Stats s = Statistics.getStatistics(emptyList);
-
+        Stats s = Statistics.getStatistics(emptyList);
+        assertTrue(Float.isNaN(s.average) && Float.isNaN(s.min) && Float.isNaN(s.max));
         // All fields of computedStats (average, max, min) must be
         // Float.NaN (not-a-number), as described in
         // https://www.geeksforgeeks.org/nan-not-number-java/
